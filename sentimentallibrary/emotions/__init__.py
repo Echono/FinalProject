@@ -17,7 +17,6 @@ class main():
   def test(self):
     NumberOfFrames = 0
     dominant_Emotion = ""
-
     cap = cv2.VideoCapture(0)
     with self.mp_face_detection.FaceDetection(
         model_selection=0, min_detection_confidence=0.5) as face_detection:
@@ -62,10 +61,9 @@ class main():
                             dominant_Emotion = dF['dominant_emotion']
                             cv2.imshow("id:2",cutFrame)
                             NumberOfFrames = 0
-                            #cv2.putText(cutFrame,str(dominant_Emotion), (30, 30), cv2.FONT_HERSHEY_DUPLEX, 3, (255, 0, 0), 3)
                           cv2.putText(image,str(dominant_Emotion), (70, 70), cv2.FONT_HERSHEY_DUPLEX, 3, (255, 0, 0), 3)
         # Flip the image horizontally for a selfie-viewdisplay.
-        cv2.imshow("id:1 " + 'test fuck head', image)
+        cv2.imshow("id:1 " + 'test Noob', image)
         if cv2.waitKey(5) & 0xFF == 27:
           break
     
