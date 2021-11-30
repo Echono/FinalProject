@@ -20,15 +20,15 @@ class sentimentalanalysissuper():
         pass
 
     @classmethod
-    def facial_recognition(self, frame, frame_color = "BGR"):
+    def facial_recognition(self, frame):
         """
         Returns information depended on amount of faces detected in frame
-        """
+        
         try:
             self.confirm_input(frame)
-        except FrameNotAcceptable as e:
+        except FrameNotAcceptable() as e:
             logging.error(e.to_string())
-        if frame_color == "BGR":
-            frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
+        """
+        frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         detections = mp.solutions.face_detection.FaceDetection().process(frame)
         return detections
