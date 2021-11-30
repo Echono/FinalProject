@@ -20,10 +20,10 @@ setup_args = dict(
     license = 'MIT',
     packages = find_packages(),
     author = 'Casper Ung, Aleksander mosekjær',
-    author_email = 'wonger1324@gmail.com, REMEMBER TO ADD',
-    keywords=['Sentimental', 'SentimentalAnalysis', 'NaturalLanguageProcessing'],
-    url='https://github.com/Echono/FinalProject',
-    download_url='REMEMBER TO ADD'
+    author_email = 'wonger1324@gmail.com, 1080633@ucn.dk',
+    keywords = ['Sentimental', 'SentimentalAnalysis', 'NaturalLanguageProcessing'],
+    url = 'https://github.com/Echono/FinalProject',
+    download_url = 'REMEMBER TO ADD'
 )
 
 # Installing required libraries
