@@ -4,4 +4,6 @@ class Error(Exception):
 
 class FrameNotAcceptable(Error):
     """Frame could not be accepted by the verification process"""
-    pass
+    @classmethod
+    def to_string(self, frame):
+        return (f'The given frame: {frame}, was not suitable for authentication')
