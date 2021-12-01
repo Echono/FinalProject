@@ -8,7 +8,7 @@ class sentimentalanalysissuper_test(unittest.TestCase):
 
     """Edit these two values to make use of the test. Goal is the amount of people on the picture, frame is the path to the picture"""
     goal = 1
-    frame = cv.imread('testdata/test1.jpg', 0)
+    frame = cv.imread("testdata/test1.jpg", 0)
     
     def test(self):
         sentimentalanalysissuper_variable = sentimentalanalysissuper()
