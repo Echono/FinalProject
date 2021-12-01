@@ -2,25 +2,22 @@ import sys
 sys.path.insert(0,'..')
 import mediapipe as mp
 from deepface import DeepFace as df
-import cv2 as cv
 from sentimentaltools.models.facialanalysismodel import facial_analysis_model
 from sentimentaltools.interfaces.sentimentalanalysissuper import sentimentalanalysissuper
 
 class sentimentalanalysis(sentimentalanalysissuper):
 
     def __init__(self):
-        super.__init__()
         self.mp_draw =  mp.solutions.mediapipe.python.solutions.drawing_utils
 
-    @classmethod
     def facial_sentimental_analysis(self, frame, facial_recognition_results):
         """
         A method to analyze a given frame for people's emotions.  
         """
-        analysis_results = list
+        analysis_results = []
         if facial_recognition_results.detections:
-            for id, detection in facial_recognition_results.detections:
-                new_analysis_object = facial_analysis_model
+            for id, detection in enumerate(facial_recognition_results.detections):
+                new_analysis_object = facial_analysis_model()
                 facial_location = detection.location_data
                 if facial_location.HasField('relative_bounding_box'):
                     frame_row, frame_col, _ = frame.shape
@@ -36,7 +33,7 @@ class sentimentalanalysis(sentimentalanalysissuper):
                     if rect_start_point and rect_end_point:
                         rect_start_x, rect_start_y = rect_start_point
                         rect_end_x, rect_end_y = rect_end_point
-                        cut_frame = frame[rect_start_x:rect_start_y, rect_end_x:rect_end_y]
+                        cut_frame = frame[rect_start_y:rect_end_y, rect_start_x:rect_end_x]
                         emotions = df.analyze(cut_frame, actions=['emotion'], enforce_detection=False)
                         if emotions:
                             new_analysis_object.set_related_bounding_box_id(id)
