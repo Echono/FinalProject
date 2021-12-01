@@ -3,7 +3,7 @@ sys.path.insert(0,'..')
 import mediapipe as mp
 from deepface import DeepFace as df
 import cv2 as cv
-from models import facialanalysismodel
+from sentimentaltools.models.facialanalysismodel import facial_analysis_model
 from sentimentaltools.interfaces.sentimentalanalysissuper import sentimentalanalysissuper
 
 class sentimentalanalysis(sentimentalanalysissuper):
@@ -20,7 +20,7 @@ class sentimentalanalysis(sentimentalanalysissuper):
         analysis_results = list
         if facial_recognition_results.detections:
             for id, detection in facial_recognition_results.detections:
-                new_analysis_object = facialanalysismodel
+                new_analysis_object = facial_analysis_model
                 facial_location = detection.location_data
                 if facial_location.HasField('relative_bounding_box'):
                     frame_row, frame_col, _ = frame.shape
@@ -39,4 +39,11 @@ class sentimentalanalysis(sentimentalanalysissuper):
                         cut_frame = frame[rect_start_x:rect_start_y, rect_end_x:rect_end_y]
                         emotions = df.analyze(cut_frame, actions=['emotion'], enforce_detection=False)
                         if emotions:
-                            pass
+                            new_analysis_object.set_related_bounding_box_id(id)
+                            new_analysis_object.set_emotions(emotions)
+                            new_analysis_object.set_dominant_emotion(emotions['dominant_emotion'])
+                            new_analysis_object.set_location_data(facial_location)
+                            new_analysis_object.set_related_frame(frame)
+                            new_analysis_object.set_analyzed_frame(cut_frame)
+                            analysis_results.append(new_analysis_object)
+        return analysis_results
