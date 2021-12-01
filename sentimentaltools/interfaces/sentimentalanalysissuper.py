@@ -36,5 +36,5 @@ class sentimentalanalysissuper():
         """
         self.confirm_input(frame)
         frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
-        detections = mp.solutions.face_detection.FaceDetection().process(frame)
-        return detections
+        facial_recognition_results = mp.solutions.face_detection.FaceDetection().process(frame)
+        return facial_recognition_results
