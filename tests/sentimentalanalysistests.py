@@ -2,7 +2,7 @@ import sys
 sys.path.insert(0, '..')
 import unittest
 import cv2 as cv
-from sentimentaltools.interfaces.sentimentalanalysissuper import sentimentalanalysissuper
+from sentimentaltools.sentimentalanalysis import sentimentalanalysis
 
 class sentimentalanalysis_facial_recognition_test(unittest.TestCase):
 
@@ -11,8 +11,8 @@ class sentimentalanalysis_facial_recognition_test(unittest.TestCase):
     frame = cv.imread("testdata/test1.jpg", 0)
     
     def test(self):
-        sentimentalanalysissuper_variable = sentimentalanalysissuper()
-        result = sentimentalanalysissuper_variable.facial_recognition(self.frame)
+        sentimentalanalysis_variable = sentimentalanalysis()
+        result = sentimentalanalysis_variable.facial_recognition(self.frame)
         count = 0
         for id, detections in enumerate(result.detections):
             count = count + 1
@@ -20,9 +20,22 @@ class sentimentalanalysis_facial_recognition_test(unittest.TestCase):
 
 class sentimentalanalysis_facial_sentimental_analysis_test(unittest.TestCase):
 
+    goal = "neutral"
+    test_repeats = 10
+    frame = cv.imread("testdata/test1.jpg", 0)
+
     def test(self):
-        self.assertEqual(1, 1)
+        dominants = []
+        sentimentalanalysis_variable = sentimentalanalysis()
+        facial_recognition_result = sentimentalanalysis_variable.facial_recognition(self.frame)
+        i = 0
+        while i < 10:
+            result = sentimentalanalysis_variable.facial_sentimental_analysis(self.frame, facial_recognition_result)
+            dominants.append(result[0].get_dominant_emotion())
+            i = i + 1
+        self.assertEqual(dominants[0], self.goal)
+
 
 if __name__ == '__main__':
     unittest.main()
-        
+    

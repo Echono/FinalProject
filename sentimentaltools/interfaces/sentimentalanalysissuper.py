@@ -2,7 +2,6 @@ import sys
 sys.path.insert(0,'..')
 import mediapipe as mp
 import cv2 as cv
-import logging
 import numpy
 from sentimentaltools.exceptions.sentimentalerrors import FrameNotAcceptable
 
@@ -20,7 +19,10 @@ class sentimentalanalysissuper():
         msg = ""
         if frame is not None:
             if type(frame).__module__ == numpy.__name__:
-                check = True
+                if len(frame.shape) == 2:
+                    check = True
+                else:
+                    msg = f'The given frame: "{frame}" was not the right amount of channels. Channels recieved: {len(frame.shape)}, accpted amount: 2. Make sure image is grayscaled'
             else:
                 msg = f'The given frame: "{frame}" was not type of numpy which is the type opencv uses'
         else:
