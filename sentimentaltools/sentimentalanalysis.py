@@ -1,5 +1,3 @@
-import sys
-sys.path.insert(0,'..')
 import mediapipe as mp
 import cv2 as cv
 from deepface import DeepFace as df
