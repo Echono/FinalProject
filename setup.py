@@ -13,17 +13,17 @@ with open('requirements.txt', 'r') as requirements_file:
 # Package details
 setup_args = dict(
     name = 'sentimentaltools',
-    version = '0.1.0',
-    description = 'A  tool to analyze an emotional state of a person useing computer vision',
+    version = '0.2.4',
+    description = 'A  tool to analyze an emotional state of a person using computer vision',
     long_description_content_type = "text/markdown",
     long_description = README + '\n\n' + HISTORY,
     license = 'MIT',
-    packages = find_packages(),
+    packages = {'sentimentaltools': ['']},
     author = 'Casper Ung, Aleksander mosekjær',
     author_email = 'wonger1324@gmail.com, 1080633@ucn.dk',
     keywords = ['Sentimental', 'SentimentalAnalysis', 'NaturalLanguageProcessing'],
     url = 'https://github.com/Echono/FinalProject',
-    download_url = 'REMEMBER TO ADD'
+    download_url = 'https://github.com/Echono/FinalProject'
 )
 
 # Installing required libraries

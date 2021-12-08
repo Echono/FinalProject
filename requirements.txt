@@ -1,3 +1,4 @@
-lol
-kekw
-test
+numpy
+mediapipe
+opencv-python
+deepface
