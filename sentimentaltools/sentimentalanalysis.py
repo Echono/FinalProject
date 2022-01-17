@@ -1,8 +1,10 @@
+import sys
+sys.path.insert(0, '..')
 import mediapipe as mp
 import cv2 as cv
 from deepface import DeepFace as df
-from models.facialanalysismodel import facial_analysis_model
-from interfaces.sentimentalanalysissuper import sentimentalanalysissuper
+from sentimentaltools.models.facialanalysismodel import facial_analysis_model
+from sentimentaltools.interfaces.sentimentalanalysissuper import sentimentalanalysissuper
 
 class sentimentalanalysis(sentimentalanalysissuper):
 

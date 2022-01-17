@@ -1,7 +1,9 @@
+import sys
+sys.path.insert(0, '..')
 import mediapipe as mp
 import cv2 as cv
 import numpy
-from exceptions.sentimentalerrors import FrameNotAcceptable
+from sentimentaltools.exceptions.sentimentalerrors import FrameNotAcceptable
 
 class sentimentalanalysissuper():
 
